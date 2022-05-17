@@ -1,33 +1,34 @@
 import React from "react";
 
 function App() {
-  type Age = number;
-  type Name = string;
+  let a: unknown;
 
-  type Player = {
-    readonly name: Name;
-    age?: Age;
+  if (typeof a === "number") {
+    let b = a + 1;
+  }
+  if (typeof a === "string") {
+    let b = a.toUpperCase();
+  }
+
+  const hello = () => {
+    console.log("hello");
+    return "hello";
+  };
+  hello().toUpperCase();
+
+  const bye = (name: string | number) => {
+    if (typeof name === "string") {
+      console.log(typeof name);
+    } else if (typeof name === "number") {
+      console.log(typeof name);
+    } else {
+      console.log(typeof name);
+    }
   };
 
-  const player: [string, number, boolean] = ["nico", 12, true];
-  player[0] = "1";
-  console.log(player);
+  bye(3);
 
-  let a = [1, "D", true, undefined];
-
-  const playerMaker = (name: string, age?: number): Player => {
-    return {
-      name,
-      age,
-    };
-  };
-
-  const nico = playerMaker("nico", 12);
-
-  nico.age = 24;
-
-  console.log(nico.age);
-  return <div className="App"></div>;
+  return null;
 }
 
 export default App;
