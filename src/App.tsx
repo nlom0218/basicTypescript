@@ -28,6 +28,12 @@ function App() {
 
   bye(3);
 
+  type Add = (a: number, b: number) => void;
+
+  const add: Add = (a, b) => {
+    a + b;
+  };
+
   return null;
 }
 
