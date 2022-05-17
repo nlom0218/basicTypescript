@@ -30,6 +30,7 @@ function App() {
 
   // call Signatures
   type Add = {
+    // Overloading
     (a: number, b: number): number;
     (a: number, b: number, c: number): number;
   };
@@ -53,6 +54,19 @@ function App() {
     if (typeof b === "string") return a;
     return a + b;
   };
+
+  type SuperPrint = {
+    // Polymorphism
+    <TypePlaceholder>(arr: TypePlaceholder[]): TypePlaceholder;
+  };
+
+  const superPrint: SuperPrint = (arr) => arr[0];
+
+  const e = superPrint([1, 2, 3, 4]);
+  const f = superPrint([true, false, true]);
+  const g = superPrint(["a", "b", "c"]);
+  const h = superPrint([1, 2, true, false, "a"]);
+  console.log(e, f, g, h);
 
   return null;
 }
