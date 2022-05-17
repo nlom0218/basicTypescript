@@ -5,9 +5,15 @@ function App() {
   type Name = string;
 
   type Player = {
-    name: Name;
+    readonly name: Name;
     age?: Age;
   };
+
+  const player: [string, number, boolean] = ["nico", 12, true];
+  player[0] = "1";
+  console.log(player);
+
+  let a = [1, "D", true, undefined];
 
   const playerMaker = (name: string, age?: number): Player => {
     return {
@@ -17,6 +23,8 @@ function App() {
   };
 
   const nico = playerMaker("nico", 12);
+
+  nico.age = 24;
 
   console.log(nico.age);
   return <div className="App"></div>;
