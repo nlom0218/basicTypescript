@@ -1,26 +1,42 @@
 import React, { useState } from "react";
+import { threadId } from "worker_threads";
 
 function App() {
-  abstract class User {
-    constructor(
-      protected firstName: string,
-      protected lastName: string,
-      protected nickname: string
-    ) {}
-    abstract getNickName(): void;
-    getFullName() {
-      return `${this.firstName} ${this.lastName}`;
+  type Words = {
+    [key: string]: string;
+  };
+
+  class Dict {
+    private words: Words;
+    constructor() {
+      this.words = {};
     }
-  }
-  class Player extends User {
-    getNickName() {
-      console.log(this.nickname);
+    add(word: Word) {
+      if (this.words[word.term] === undefined) {
+        this.words[word.term] = word.def;
+      }
+    }
+    def(term: string) {
+      return this.words[term];
+    }
+    static hello() {
+      return "hello";
     }
   }
 
-  const nico = new Player("nico", "las", "니꼬");
+  class Word {
+    constructor(public readonly term: string, public readonly def: string) {}
+  }
 
-  console.log(nico.getNickName());
+  const kimchi = new Word("kimchi", "한국의 음식");
+
+  const dic = new Dict();
+  dic.add(kimchi);
+  dic.def("kimchi");
+
+  console.log(dic.def("kimchi"));
+
+  console.log(Dict.hello());
 
   return null;
 }
