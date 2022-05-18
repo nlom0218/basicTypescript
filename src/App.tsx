@@ -14,28 +14,41 @@ function App() {
     health: number;
   }
 
-  const hd: Player = {
-    nickname: "hd",
-    team: "devloper",
-    health: 3,
-  };
-
   interface User {
-    name: string;
-  }
-  interface User {
+    firstName: string;
     lastName: string;
+    sayHi(name: string): string;
+    fullName(): string;
   }
-  interface User {
+
+  interface Human {
     health: number;
   }
-  interface MyUser extends User {}
 
-  const nico: MyUser = {
-    name: "nico",
-    lastName: "las",
-    health: 10,
+  class Player2 implements User, Human {
+    constructor(
+      public firstName: string,
+      public lastName: string,
+      public health: number
+    ) {}
+    fullName(): string {
+      return `${this.firstName} ${this.lastName}`;
+    }
+    sayHi(name: string): string {
+      return `Hello! ${this.fullName()}`;
+    }
+  }
+
+  const makeUser = (user: User) => {
+    return "hi";
   };
+
+  makeUser({
+    firstName: "nico",
+    lastName: "las",
+    fullName: () => "string",
+    sayHi: (name) => name,
+  });
 
   return null;
 }
