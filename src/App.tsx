@@ -8,51 +8,38 @@ function App() {
 
   // type 키워드는 interface에 비해 좀 더 활용도가 많다.
   // interface는 오로지 오브젝트의 모양을 타입스크립트에게 설명한다.(아래의 모양으로만 사용가능하다.)
-  interface Player {
+  interface Player2222 {
     nickname: string;
     team: string;
     health: number;
   }
 
-  type PlayerA = {
-    name: string;
-  };
-
-  type PlayerAA = PlayerA & {
-    lastName: string;
-  };
-
-  const player: PlayerAA = {
-    name: "nico",
-    lastName: "las",
-  };
-
-  class UserA implements PlayerA {
-    constructor(public name: string) {}
+  interface SStorage<T> {
+    [key: string]: T;
   }
 
-  // interface
-  interface PlayerB {
-    name: string;
+  class LocalStorage<T> {
+    private storage: SStorage<T> = {};
+    set(key: string, value: T) {
+      this.storage[key] = value;
+    }
+    remove(key: string) {
+      delete this.storage[key];
+    }
+    get(key: string): T {
+      return this.storage[key];
+    }
+    clear() {
+      this.storage = {};
+    }
   }
 
-  interface PlayerBB {
-    health: number;
-  }
-
-  interface PlayerBB extends PlayerB {
-    lastName: string;
-  }
-
-  const playerB: PlayerBB = {
-    name: "nico",
-    lastName: "las",
-    health: 3,
-  };
-
-  class UserB implements PlayerB {
-    constructor(public name: string) {}
-  }
+  const stringsStorage = new LocalStorage<string>();
+  const booleansStorage = new LocalStorage<boolean>();
+  booleansStorage.get("33");
+  booleansStorage.set("sdfsd", true);
+  stringsStorage.set("sdfsd", "dsfs");
+  console.log(stringsStorage, booleansStorage);
 
   return null;
 }
