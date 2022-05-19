@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { threadId } from "worker_threads";
+import BlockChanin from "./BlockChanin";
 
 function App() {
   // 아래의 내용은 interfacefh gkf tn djqtek.
@@ -36,12 +37,12 @@ function App() {
 
   const stringsStorage = new LocalStorage<string>();
   const booleansStorage = new LocalStorage<boolean>();
-  booleansStorage.get("33");
-  booleansStorage.set("sdfsd", true);
-  stringsStorage.set("sdfsd", "dsfs");
-  console.log(stringsStorage, booleansStorage);
 
-  return null;
+  return (
+    <React.Fragment>
+      <BlockChanin />
+    </React.Fragment>
+  );
 }
 
 export default App;
