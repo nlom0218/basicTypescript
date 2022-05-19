@@ -14,41 +14,45 @@ function App() {
     health: number;
   }
 
-  interface User {
-    firstName: string;
+  type PlayerA = {
+    name: string;
+  };
+
+  type PlayerAA = PlayerA & {
     lastName: string;
-    sayHi(name: string): string;
-    fullName(): string;
+  };
+
+  const player: PlayerAA = {
+    name: "nico",
+    lastName: "las",
+  };
+
+  class UserA implements PlayerA {
+    constructor(public name: string) {}
   }
 
-  interface Human {
+  // interface
+  interface PlayerB {
+    name: string;
+  }
+
+  interface PlayerBB {
     health: number;
   }
 
-  class Player2 implements User, Human {
-    constructor(
-      public firstName: string,
-      public lastName: string,
-      public health: number
-    ) {}
-    fullName(): string {
-      return `${this.firstName} ${this.lastName}`;
-    }
-    sayHi(name: string): string {
-      return `Hello! ${this.fullName()}`;
-    }
+  interface PlayerBB extends PlayerB {
+    lastName: string;
   }
 
-  const makeUser = (user: User) => {
-    return "hi";
+  const playerB: PlayerBB = {
+    name: "nico",
+    lastName: "las",
+    health: 3,
   };
 
-  makeUser({
-    firstName: "nico",
-    lastName: "las",
-    fullName: () => "string",
-    sayHi: (name) => name,
-  });
+  class UserB implements PlayerB {
+    constructor(public name: string) {}
+  }
 
   return null;
 }
