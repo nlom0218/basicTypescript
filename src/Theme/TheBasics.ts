@@ -26,6 +26,12 @@ const TheBasics = () => {
   //   }
   // This condition will always return 'false' since ths types "a" and "b" hoave no overlap.
 
+  const greet = (person: string, data: string) => {
+    console.log(`Hello${person}, today is ${data}`);
+  };
+  // greet("Brendan");
+  // Expected 2 arguments, but got 1.
+
   return null;
 };
 
