@@ -26,11 +26,17 @@ const TheBasics = () => {
   //   }
   // This condition will always return 'false' since ths types "a" and "b" hoave no overlap.
 
-  const greet = (person: string, data: string) => {
-    console.log(`Hello${person}, today is ${data}`);
+  const greet = (person: string, data: Date): string => {
+    return `Hello${person}, today is ${data.toDateString()}`;
   };
   // greet("Brendan");
   // Expected 2 arguments, but got 1.
+
+  // greet("Maddison", Date()); Argument of type 'string' is not assignable to parameter of type 'Date'.
+
+  greet("Maddison", new Date());
+
+  let msg = "hello there!"; // let msg: string => TypeScript can even just infer the types for us even if we omit them.
 
   return null;
 };
